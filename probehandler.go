@@ -44,3 +44,17 @@ func (h *Handler) Fail() {
 	h.f = true
 	h.m.Unlock()
 }
+
+// Success always send http.StatusOK
+func Success() http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+	})
+}
+
+// Fail always send http.StatusServiceUnavailable
+func Fail() http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusServiceUnavailable)
+	})
+}
