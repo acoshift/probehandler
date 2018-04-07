@@ -20,7 +20,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	f := h.f
 	h.m.RUnlock()
 	if f {
-		w.WriteHeader(http.StatusInternalServerError)
+		w.WriteHeader(http.StatusServiceUnavailable)
 		return
 	}
 	w.WriteHeader(http.StatusOK)
