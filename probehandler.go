@@ -5,6 +5,11 @@ import (
 	"sync"
 )
 
+// New creates new handler
+func New() *Handler {
+	return &Handler{}
+}
+
 // Handler is the probe handler
 // default handler is success until call Fail
 type Handler struct {
